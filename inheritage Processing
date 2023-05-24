@@ -1,0 +1,194 @@
+class kirby{
+  kirby(float x,float y ,float z){a=x; b=y; c=z;}
+  float a,b,c;
+  void normaltype(){
+    fill(244,176,199);
+    circle(a,b,c);
+    eye(a,b,c);
+    mouth(a,b,c);
+    pink(a,b,c);
+}
+void eye(float x,float y,float z){
+  float a,b;
+  x=x-(0.13*z) ;
+  y=y-(0.08*z);
+  a=0.12*z;
+  b=0.29*z;
+  fill(5,115,192);
+  strokeWeight(4);
+  ellipse(x,y,a,b);
+  x=x+(0.26*z);
+  ellipse(x,y,a,b);
+  fill(0,0,0);
+  strokeWeight(1);
+  y=y-(0.03*z);
+  a=0.11*z; b=0.2*z;
+  ellipse(x,y,a,b);
+  x=x-(0.26*z);
+  ellipse(x,y,a,b);
+  fill(255,255,255);
+  y=y-(0.05*z);
+  a=0.07*z; b=0.12*z;
+  ellipse(x,y,a,b);
+  x=x+(0.26*z);
+  ellipse(x,y,a,b);
+}
+void mouth(float x,float y,float z){
+  float a,b;
+  strokeWeight(2);
+  fill(244,176,199);
+  y=y+(0.12*z); a=0.14*z; b=0.08*z; 
+  arc(x,y,a,b,radians(20),radians(160));
+}
+void pink(float x,float y,float z){
+  float a,b;
+  fill(235,105,151);
+  strokeWeight(0);
+  x=x+(0.32*z); y=y+(0.06*z);
+  a=0.19*z; b=0.11*z;
+  ellipse(x,y,a,b);
+  x=x-(0.64*z);
+  ellipse(x,y,a,b);
+}
+}
+class swordkirby extends kirby{
+  swordkirby(float p,float q,float r){
+    super(p,q,r);
+  }
+  void swordtype(){
+    normaltype();
+    link(a,b,c);
+    linkface(a,b,c);
+    sword(a,b,c);
+  }
+  void link(float x,float y,float z){
+  fill(38,199,85);
+  quad(x-z*0.4,y-z*0.35,x+z*0.4,y-z*0.35,x+z*0.8,y-z*0.25,x+z*0.1,y-z*0.7);
+  fill(255,238,95);
+  quad(x-z*0.45,y-z*0.225,x+z*0.45,y-z*0.225,x+z*0.4,y-z*0.35,x-z*0.4,y-z*0.35);
+  circle(x+z*0.8,y-z*0.25,z*0.1);
+}
+void linkface(float x,float y, float z){
+  fill(244,176,199);
+  stroke(244,176,199);
+  triangle(x-z*0.16,y-z*0.226,x+z*0.16,y-z*0.226,x,y-z*0.12);
+  stroke(0,0,0);
+  strokeWeight(3);
+  line(x-z*0.16,y-z*0.226,x-0.065*z,y-z*0.16);
+  line(x+z*0.16,y-z*0.226,x+0.065*z,y-z*0.16);
+  ellipse(x,y+0.15*z,z*0.13,z*0.08);
+}
+void sword(float x,float y,float z){
+  strokeWeight(1);
+  fill(225,217,219);
+  quad(x-z*0.7,y-z*0.3,x-z*0.53,y-z*0.18,x-z*0.43,y+z*0.35,x-z*0.73,y-z*0.08);
+  fill(39,175,249);
+  quad(x-z*0.6,y+z*0.35,x-z*0.35,y+z*0.2,x-z*0.35,y+z*0.32,x-z*0.5,y+z*0.4);
+  quad(x-z*0.455,y+z*0.377,x-z*0.4,y+z*0.346,x-z*0.35,y+z*0.45,x-z*0.398,y+z*0.478);
+  fill(250,222,15);
+  circle(x-z*0.45,y+z*0.32,z*0.09);
+  fill(233,83,0);
+  stroke(233,83,0);
+  circle(x-z*0.45,y+z*0.32,z*0.06);
+}
+}
+class firekirby extends kirby{
+  firekirby(float p,float q,float r){
+    super(p,q,r);
+  }
+  void firetype(){
+    normaltype();
+    fire(a,b,c);
+    fireface(a,b,c);
+  }
+  void fire(float x,float y, float z){
+  fill(231,206,15);
+  quad(x-z*0.45,y-z*0.225,x+z*0.45,y-z*0.225,x+z*0.4,y-z*0.305,x-z*0.4,y-z*0.305);
+  fill(247,239,71);
+  quad(x-z*0.4,y-z*0.305,x+z*0.4,y-z*0.305,x+z*0.42,y-z*0.35,x-z*0.42,y-z*0.35);
+  fill(233,80,20);
+  arc(x,y-z*0.63,z*1.1,z*0.9,radians(140),radians(200));
+  arc(x,y-z*0.63,z*1.1,z*0.9,radians(-20),radians(40));
+  fill(233,80,20);
+  triangle(x-z*0.42,y-z*0.35,x+z*0.42,y-z*0.35,x,y-z);
+  fill(247,244,14);
+  stroke(247,244,14);
+  arc(x,y-z*0.58,z*0.88,z*0.69,radians(137),radians(190));
+  arc(x,y-z*0.58,z*0.88,z*0.69,radians(-10),radians(43));
+  triangle(x-z*0.38,y-z*0.35,x+z*0.38,y-z*0.35,x,y-z*0.78);
+}
+void fireface(float x, float y ,float z){
+   fill(244,176,199);
+  stroke(244,176,199);
+  triangle(x-z*0.16,y-z*0.226,x+z*0.16,y-z*0.226,x,y-z*0.12);
+  stroke(0,0,0);
+  strokeWeight(3);
+  line(x-z*0.16,y-z*0.226,x-0.065*z,y-z*0.16);
+  line(x+z*0.16,y-z*0.226,x+0.065*z,y-z*0.16);
+  ellipse(x,y+0.15*z,z*0.13,z*0.08);
+}
+}
+class moving {
+  moving(float p,float q,float r){
+    a=p; b=q; c=r;
+}
+  float a,b,c;
+  kirby x; swordkirby y; firekirby z;
+  void keymoving(){
+    if(keyPressed){ 
+    if (key == 'd') a+=10;
+    else if (key== 'a') a-=10;
+    else if (key == 'w') b-=10;
+    else if (key == 's') b+=10;
+    }
+    if (a>width) a=width;
+  else if (a<0) a=0;
+  if (b>height) b=height;
+  else if (b<0) b=0;
+  if(a<=width/3){y=new swordkirby(a,b,c); y.swordtype();}
+  else if(a<=width*2/3){x=new kirby(a,b,c); x.normaltype();}
+  else if(a>width*2/3){z=new firekirby(a,b,c); z.firetype();}
+}
+}
+class clone extends moving{
+  clone(float p,float q,float r){super(p,q,r); e=1; d=new moving[1]; d[0]=new moving(p,q,r);}
+  moving []d; int e;
+  void clonemoving(){
+        for(int i=0; i<e; i++) d[i].keymoving();
+        if (mousePressed) clonemaking();
+  }
+  void clonemaking(){
+    e+=1;
+    if(e>=9) e=9;
+    d=new moving[e];
+    for(int i=0; i<e; i++){
+      if(i<3)d[i]=new moving(a+i*c,b,c);
+      else if(i<6) d[i]=new moving(a+(i-3)*c,b-c,c);
+      else if(i<9) d[i]=new moving(a+(i-6)*c,b-2*c,c);
+    }
+    }
+  }
+clone k;
+void setup(){
+  size(1600,900);
+  k=new clone(width/2,600,200);
+}
+void draw(){
+  background(94,222,92);
+  fill(239,120,54);
+  rect(0,0,width/3,height);
+  fill(150,201,220);
+  rect(width*2/3,0,width/3,height);
+  textSize(80);
+  fill(0,0,0);
+  text("Sword type",40,200);
+  text("Normal type",width*3/8,200);
+  text("Fire type",width*3/4,200);
+  stroke(0,0,0);
+  strokeWeight(3);
+  line(width/3,0,width/3,height);
+  line(width*2/3,0,width*2/3,height);
+  k.clonemoving();
+}
+  
+  
